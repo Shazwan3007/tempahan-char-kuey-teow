@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Char Kuey Teow Udang | Tempahan</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+.app {
+    max-width: 520px;
+    min-height: 100vh;
+    margin: auto;
+    background: white;
+    padding-bottom: 30px;
+}
+
+/* HERO */
+
+.hero {
+    padding: 70px 20px 35px;
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.65)
+        ),
+        linear-gradient(
+            135deg,
+            #e85d04,
+            #ff9f1c
+        );
+}
+
+.badge {
+    display: inline-block;
+    background: #ffcc00;
+    color: #222;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    margin: 15px 0 8px;
+    font-size: 30px;
+}
+
+.hero p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* CARD */
+
+.card {
+    margin: -15px 15px 0;
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.12);
+}
+
+/* PRODUCT */
+
+.product {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #ffb703,
+        #fb8500
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 55px;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h2 {
+    margin: 0 0 6px;
+    font-size: 20px;
+}
+
+.description {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.price {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #e85d04;
+}
+
+/* FORM */
+
+.section-title {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    font-size: 15px;
+    background: white;
+}
+
+/* QUANTITY */
+
+.quantity-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 0;
+}
+
+.quantity-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantity-buttons button {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eee;
+
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.quantity-buttons button:active {
+    transform: scale(.95);
+}
+
+.quantity-number {
+    min-width: 25px;
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* SUMMARY */
+
+.summary {
+    margin-top: 20px;
+    padding: 15px;
+
+    background: #fafafa;
+    border-radius: 12px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 8px 0;
+
+    font-size: 14px;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 12px;
+    padding-top: 12px;
+
+    border-top: 1px solid #ddd;
+
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.total {
+    color: #e85d04;
+}
+
+/* BUTTON */
+
+.order-button {
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 16px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: #16a34a;
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.order-button:disabled {
+    background: #999;
+}
+
+/* NOTE */
+
+.note {
+    margin-top: 10px;
+
+    text-align: center;
+
+    font-size: 11px;
+    color: #888;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 25px;
+
+    text-align: center;
+
+    color: #888;
+    font-size: 12px;
+}
+
+/* SUCCESS */
+
+.success {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.55);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.success-box {
+    width: 100%;
+    max-width: 400px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 55px;
+}
+
+.success-box h2 {
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.close-button {
+    width: 100%;
+
+    margin-top: 15px;
+    padding: 13px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #222;
+    color: white;
+
+    font-weight: bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="badge">
+        🔥 BEST SELLER
+    </div>
+
+    <h1>
+        Char Kuey Teow Udang
+    </h1>
+
+    <p>
+        Panas • Wangi • Sedap • Dimasak selepas tempahan
+    </p>
+
+</section>
+
+
+<!-- CARD -->
+
+<div class="card">
+
+
+<!-- PRODUCT -->
+
+<div class="product">
+
+    <div class="product-image">
+        🍜
+    </div>
+
+    <div class="product-info">
+
+        <h2>
+            Char Kuey Teow Udang
+        </h2>
+
+        <div class="description">
+
+            Char kuey teow goreng
+            dengan udang segar.
+
+        </div>
+
+        <div class="price">
+            RM10.00
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ORDER -->
+
+<div class="section-title">
+    🛒 Buat Tempahan
+</div>
+
+
+<!-- QUANTITY -->
+
+<div class="quantity-box">
+
+    <div>
+        Kuantiti
+    </div>
+
+    <div class="quantity-buttons">
+
+        <button
+            type="button"
+            onclick="ubahKuantiti(-1)">
+            −
+        </button>
+
+        <div
+            id="quantity"
+            class="quantity-number">
+            1
+        </div>
+
+        <button
+            type="button"
+            onclick="ubahKuantiti(1)">
+            +
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- NAME -->
+
+<label>
+    Nama pelanggan
+</label>
+
+<input
+    type="text"
+    id="nama"
+    placeholder="Contoh: Ahmad">
+
+
+<!-- PHONE -->
+
+<label>
+    No. WhatsApp
+</label>
+
+<input
+    type="tel"
+    id="whatsapp"
+    placeholder="Contoh: 0123456789">
+
+
+<!-- PICKUP -->
+
+<label>
+    🕐 Waktu pickup
+</label>
+
+<select id="pickup">
+
+    <option>9:00 pagi</option>
+    <option>10:00 pagi</option>
+    <option>11:00 pagi</option>
+    <option>12:00 tengah hari</option>
+    <option>1:00 petang</option>
+    <option>2:00 petang</option>
+    <option>3:00 petang</option>
+
+</select>
+
+
+<!-- NOTE -->
+
+<label>
+    📝 Catatan
+</label>
+
+<textarea
+    id="catatan"
+    rows="3"
+    placeholder="Contoh: tidak mahu pedas"></textarea>
+
+
+<!-- SUMMARY -->
+
+<div class="summary">
+
+    <div class="summary-row">
+
+        <span>
+            Harga
+        </span>
+
+        <span>
+            RM10.00
+        </span>
+
+    </div>
+
+    <div class="summary-row">
+
+        <span>
+            Kuantiti
+        </span>
+
+        <span id="summaryQuantity">
+            1
+        </span>
+
+    </div>
+
+    <div class="summary-total">
+
+        <span>
+            Jumlah
+        </span>
+
+        <span
+            id="total"
+            class="total">
+            RM10.00
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- BUTTON -->
+
+<button
+    type="button"
+    id="orderButton"
+    class="order-button"
+    onclick="buatTempahan()">
+
+    🛒 HANTAR TEMPAHAN
+
+</button>
+
+
+<div class="note">
+
+    Tempahan akan direkodkan secara automatik.
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    ©️ 2026 Char Kuey Teow Udang
+
+    <br>
+
+    Terima kasih kerana menyokong perniagaan kami ❤️
+
+</div>
+
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div
+    id="success"
+    class="success">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+        <h2>
+            Tempahan Diterima!
+        </h2>
+
+        <p id="successText"></p>
+
+        <button
+            type="button"
+            class="close-button"
+            onclick="tutupSuccess()">
+
+            Tutup
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* ==================================================
+SUPABASE
+================================================== */
+
+const SUPABASE_URL =
+    "https://gqbhxdjtcrgsxkqvckrx.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_u6pmXfvHybwjPIw_I7TvrQ_f4xrITaC";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ==================================================
+DATA
+================================================== */
+
+let quantity = 1;
+
+const harga = 10;
+
+
+/* ==================================================
+KUANTITI
+================================================== */
+
+function ubahKuantiti(n) {
+
+    quantity += n;
+
+    if (quantity < 1) {
+        quantity = 1;
+    }
+
+    document.getElementById(
+        "quantity"
+    ).textContent = quantity;
+
+
+    document.getElementById(
+        "summaryQuantity"
+    ).textContent = quantity;
+
+
+    kiraJumlah();
+}
+
+
+/* ==================================================
+JUMLAH
+================================================== */
+
+function kiraJumlah() {
+
+    const jumlah =
+        quantity * harga;
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        "RM" + jumlah.toFixed(2);
+}
+
+
+/* ==================================================
+TEMPAHAN
+================================================== */
+
+async function buatTempahan() {
+
+    const nama =
+        document.getElementById(
+            "nama"
+        ).value.trim();
+
+
+    const whatsapp =
+        document.getElementById(
+            "whatsapp"
+        ).value.trim();
+
+
+    const pickup =
+        document.getElementById(
+            "pickup"
+        ).value;
+
+
+    const catatan =
+        document.getElementById(
+            "catatan"
+        ).value.trim();
+
+
+    /* CHECK NAME */
+
+    if (!nama) {
+
+        alert(
+            "Sila masukkan nama pelanggan."
+        );
+
+        return;
+    }
+
+
+    /* CHECK PHONE */
+
+    if (!whatsapp) {
+
+        alert(
+            "Sila masukkan nombor WhatsApp."
+        );
+
+        return;
+    }
+
+
+    const jumlah =
+        quantity * harga;
+
+
+    const button =
+        document.getElementById(
+            "orderButton"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "⏳ Menyimpan...";
+
+
+    /* ==================================================
+    INSERT KE SUPABASE
+    ================================================== */
+
+    const { data, error } =
+
+        await supabaseClient
+
+        .from("Tempahan Order")
+
+        .insert({
+
+            name: nama,
+
+            phone: whatsapp,
+
+            order:
+                "Char Kuey Teow Udang",
+
+            quantity:
+                quantity,
+
+            total:
+                jumlah,
+
+            pickup_time:
+                pickup,
+
+            notes:
+                catatan
+
+        })
+
+        .select();
+
+
+    /* ==================================================
+    ERROR
+    ================================================== */
+
+    if (error) {
+
+        console.error(
+            "SUPABASE ERROR:",
+            error
+        );
+
+
+        alert(
+
+            "Tempahan gagal disimpan.\n\n" +
+
+            "Code: " +
+            (error.code || "-") +
+
+            "\n\n" +
+
+            "Message: " +
+            (error.message || "-") +
+
+            "\n\n" +
+
+            "Details: " +
+            (error.details || "-") +
+
+            "\n\n" +
+
+            "Hint: " +
+            (error.hint || "-")
+
+        );
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "🛒 HANTAR TEMPAHAN";
+
+        return;
+    }
+
+
+    /* ==================================================
+    BERJAYA
+    ================================================== */
+
+    console.log(
+        "TEMPAHAN BERJAYA:",
+        data
+    );
+
+
+    const noOrder =
+
+        "CKT-" +
+
+        Date.now()
+        .toString()
+        .slice(-6);
+
+
+    document.getElementById(
+        "successText"
+    ).innerHTML =
+
+        "<b>No. Tempahan:</b> " +
+        noOrder +
+
+        "<br><br>" +
+
+        "<b>Nama:</b> " +
+        escapeHtml(nama) +
+
+        "<br>" +
+
+        "<b>Pesanan:</b> " +
+        quantity +
+        " × Char Kuey Teow Udang" +
+
+        "<br>" +
+
+        "<b>Pickup:</b> " +
+        escapeHtml(pickup) +
+
+        "<br>" +
+
+        "<b>Jumlah:</b> RM" +
+        jumlah.toFixed(2) +
+
+        "<br><br>" +
+
+        "Tempahan anda telah diterima.";
+
+
+    document.getElementById(
+        "success"
+    ).style.display =
+        "flex";
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "🛒 HANTAR TEMPAHAN";
+}
+
+
+/* ==================================================
+CLOSE SUCCESS
+================================================== */
+
+function tutupSuccess() {
+
+    document.getElementById(
+        "success"
+    ).style.display =
+        "none";
+}
+
+
+/* ==================================================
+ESCAPE HTML
+================================================== */
+
+function escapeHtml(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+}
+
+</script>
+
+</body>
+
+</html>
